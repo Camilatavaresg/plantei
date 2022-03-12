@@ -1,7 +1,13 @@
 // active links decor
 
+
+
 const linksMenu = document.querySelector('.links')
 const linksMenuA = linksMenu.querySelectorAll('a');
+const desktopMenu = document.querySelector('.desktop-menu');
+const mobilemenu = document.querySelector('.mobile-menu')
+
+checkScreen();
 
 linksMenu.addEventListener('click', function (event) {
     linksMenuA.forEach(item => {
@@ -10,6 +16,7 @@ linksMenu.addEventListener('click', function (event) {
     event.target.classList.add('active-link')
 })
 
+window.addEventListener('resize', checkScreen);
 
 //Faqs 
 
@@ -68,18 +75,28 @@ subscribeButton.addEventListener('click', function () {
 
 const moon = document.querySelector('.moon');
 const sun = document.querySelector('.sun');
-const body = document.querySelector('body')
+const body = document.querySelector('body');
+const menulogo = document.getElementById('menu-icon')
+const mobileLinks = document.querySelectorAll('.link-mobile')
 
 moon.addEventListener('click', function () {
     body.classList.add('night-mode');
     this.nextElementSibling.classList.remove('dont-show')
     this.classList.add('dont-show')
+    menulogo.style.color = "#e6e3e3"
+    mobileLinks.forEach(element => {
+        element.style.color = "#e6e3e3"
+    })
 })
 
 sun.addEventListener('click', function () {
     body.classList.remove('night-mode');
     this.previousElementSibling.classList.remove('dont-show')
     this.classList.add('dont-show')
+    menulogo.style.color = "black"
+    mobileLinks.forEach(element => {
+        element.style.color = "black"
+    })
 })
 
 //element to scroll up
@@ -113,4 +130,30 @@ window.addEventListener('scroll', function () {
             item.classList.add('ativo')
         } 
     })
+})
+
+function checkScreen() {
+    const windowWidth = window.innerWidth;
+    const firstImage = document.getElementById('first-image');
+    const secondImage = document.getElementById('second-img');
+    const socialMedia = document.querySelector('.pic-container');
+    if (windowWidth <= 900) {
+        firstImage.classList.remove('inactive-pic');
+        secondImage.classList.add('inactive-pic');
+        socialMedia.classList.add('inactive-pic')
+        desktopMenu.classList.add('inactive-pic');
+        mobilemenu.classList.remove('inactive-pic');
+    } else {
+        firstImage.classList.add('inactive-pic');
+        secondImage.classList.remove('inactive-pic');
+        socialMedia.classList.remove('inactive-pic');
+        desktopMenu.classList.remove('inactive-pic');
+        mobilemenu.classList.add('inactive-pic');
+    }
+    
+}
+
+menulogo.addEventListener('click', function () {
+    const mobilelinks = document.querySelector('.mobile-links')
+    mobilelinks.classList.toggle('inactive-pic')
 })

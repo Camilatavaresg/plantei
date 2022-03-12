@@ -55,8 +55,13 @@ header {
     nav {
         display: flex;
         justify-content: space-between;
-        margin: 30px 0;
+        padding: 30px 0;
         position: relative;
+
+        .moon, .sun {
+            padding: 30px 0;
+
+        }
 
         .logo {
             display: flex;
@@ -74,6 +79,41 @@ header {
                 margin-left: 6px;
             }
 
+        }
+
+        .mobile-menu {
+
+            #menu-icon {
+                margin: 0 15px 0 0;
+                display: block;
+                cursor: pointer;
+                z-index: 9!important;
+                transition: .4s ease all;
+
+                &:active {
+                    transform: translateX(-5px)
+                }
+            }
+
+            .mobile-links {
+                height: 60vh;
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: flex;
+                flex-direction: column;
+                border-radius: 8px;
+                z-index: 2;
+                margin-top: 80px;
+                animation: slidein 2s;
+
+                a {
+                    margin-right: 35px;
+                    color: black;
+                    font-size: 17px;
+                    padding: 5px 0 15px 9px;
+                }
+            }
         }
 
         .links {
@@ -120,9 +160,15 @@ main {
 .initial-content {
     max-width: 1050px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin: 125px auto 0;
+
+    img {
+        width: 370px;
+        height: 370px;
+    }
 
     .initial-content-written {
         width: 40%;
@@ -459,6 +505,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 40px;
 
     .contact-container {
 
@@ -527,10 +574,12 @@ footer {
     flex-wrap: wrap;
     max-width: 1300px;
     margin: 180px auto 50px;
+    padding: 0 40px;
 
 
     .foot-container {
         max-width: 300px;
+        padding: 0 16px 22px;
 
         h2 {
             font-size: 22px;
@@ -553,14 +602,14 @@ footer {
             }
 
             button {
-                max-width: 140px;
-                padding: 15px 13px;
+                max-width: 126px;
+                padding: 15px 12px;
                 border: none;
                 border-radius: 9px;
                 cursor: pointer;
                 color: white;
                 background-color: @first-color;
-                font-size: 15px;
+                font-size: 13px;
                 transition: 0.4s;
     
                 &:hover {
@@ -747,6 +796,17 @@ body.night-mode {
     }
 }
 
+@keyframes slidein {
+    
+    from {
+        right: -100px;
+    }
+    
+    to {
+        right: 0px;
+    }
+}
+
 //show when scrolling
 
 .js-scroll {
@@ -760,4 +820,109 @@ body.night-mode {
     transform: translate3d(0, 0, 0);
 }
 
+.inactive-pic {
+    display: none!important;
+}
 
+@media screen and (max-width: 1050px) {
+    
+    .initial-content {
+        
+        .initial-content-written {
+
+            h1 {
+                font-size: 42px!important;
+                line-height: 50px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 950px) {
+    
+    .who-we-are {
+        
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    nav {
+
+        .logo {
+            margin-left: 30px!important;
+            width: 120px;
+
+            p {
+                color: black;
+                margin-left: 6px;
+                font-size: 24px;
+            }
+        
+        }
+
+        .moon, .sun {
+            margin-top: -3px;
+            margin-right: 80px;
+            align-self: flex-start;
+        }
+    }
+    
+    .initial-content {
+
+        align-items: flex-start;
+        justify-content: center;
+        margin: 125px auto 0;
+
+        .initial-content-written {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            
+
+            h1 {
+                margin-top: 50px;
+                max-width: 550px;
+                text-align: center;
+            }
+
+            button {
+                align-self: center!important;
+            }
+        }
+
+        .pic-container {
+            margin-left: 30px;
+            align-self: center;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .initial-content {
+
+        .initial-content-written {
+            width: 86%;
+    
+            h1 {
+                font-size: 56px;
+                font-weight: 600;
+                font-family: @body-font;
+                line-height: 70px;
+                margin-bottom: 25px;
+            }
+    
+            p {
+                text-align: center;
+            }
+    }
+    }
+}
